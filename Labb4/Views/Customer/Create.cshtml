@@ -1,0 +1,33 @@
+﻿@model CustomerViewModel
+
+<h1>Create</h1>
+
+<hr />
+
+<div class="row">
+	<div class="col-6">
+		<div class="card">
+			<div class="card-header">
+				<h5>Create a new customer</h5>
+			</div>
+			<div class="card-body">
+				<form asp-controller="Customer" asp-action="CreateCustomer" method="post">
+
+					<div class="mb-3">
+						<label class="form-label">Name</label>
+						<input asp-for=NewCustomer.CustomerName type="text" class="form-control" required="required" />
+					</div>
+					<div class="mb-3">
+						<label class="form-label">Email</label>
+						<input asp-for=NewCustomer.CustomerEmail type="email" class="form-control" required="required" />
+					</div>
+					<div class="mb-3">
+						<button type="submit" class="btn btn-primary">Save</button>
+					</div>
+
+				</form>
+			</div>
+			<div class="card-footer"></div>
+		</div>
+	</div>
+</div>

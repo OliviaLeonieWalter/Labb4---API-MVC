@@ -1,0 +1,27 @@
+﻿@model BookListViewModel
+
+	<div class="mt-2 col-sm-4 col-la-4 col-md-4">
+		 <img src="@Model.Book.CoverImageUrl" alt="image of bookcover"/>
+		<div class="caption">
+			<h3>@Model.Book.BookTitle</h3>
+			<h4>@Model.Book.Author</h4>
+			<p>@Model.Book.BookDescription</p>
+				<ul class="pull-right">
+						   <li>Pages: @Model.Book.Pages</li>
+						   <li>ISBN: @Model.Book.ISBN</li>
+						   <li>Language: @Model.Book.Language</li>
+						   <li>Release Date: @Model.Book.ReleaseDate</li>
+			</ul>
+
+			@if(@Model.Book.isBorrowed == true)
+			{
+				<p class="text-danger">THIS TITLE IS CURRENLTY BORROWED</p>
+				<p class="text-danger">Return date: @Model.Book.ReturnDate.Date</p>
+			}
+			else if(@Model.Book.isBorrowed == false){
+				<button class="btn btn-primary"><a asp-controller="BorrowBook" asp-action="BorrowBookProcess" asp-route-id="@Model.Book.BookID">Borrow</a></button>
+			}
+		</div>
+
+</div>
+	

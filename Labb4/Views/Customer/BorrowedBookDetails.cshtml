@@ -1,0 +1,44 @@
+﻿@model BorrowedBookViewModel
+@if (@Model.Customer != null)
+{
+	<h1>@Model.Customer.CustomerName</h1>
+	<h2>@Model.Customer.CustomerEmail</h2>
+}
+else if (@Model.Customer == null)
+{
+	<h1>A Customer with this id does not exist!</h1>
+}
+<br />
+<br />
+@if (Model.BorrowedBooks != null)
+{
+	foreach (var book in @Model.BorrowedBooks)
+	{
+		<div>
+			<div>
+				<img src="@book.CoverImageUrl" alt="image of bookcover" />
+			</div>
+			<div>
+				<h2>@book.BookTitle</h2>
+				<h3>@book.Author</h3>
+				<p>@book.BookDescription</p>
+				<h2>Book Info:</h2>
+				<ul>
+					<li>Pages: @book.Pages</li>
+					<li>ISBN: @book.ISBN</li>
+					<li>Language: @book.Language</li>
+					<li>Release Date: @book.ReleaseDate</li>
+				</ul>
+				<br />
+				<h2>Borrowed: @book.BorrowingStartDate</h2>
+				<h2>Return at the latest: @book.ReturnDate</h2>
+				<h1>☘︎------------------------------------------------------------☘︎</h1>
+			</div>
+		</div>
+	}
+}
+else if (@Model.BorrowedBooks == null)
+{
+	<h1>@Model.Customer.CustomerName has no borrowed books!</h1>
+}
+

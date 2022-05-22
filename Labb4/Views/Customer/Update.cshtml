@@ -1,0 +1,41 @@
+﻿@model CustomerViewModel
+
+<h1>Update</h1>
+
+<hr />
+
+<div class="row">
+	<div class="col-6">
+		<div class="card">
+			<div class="card-header">
+				<h5>Update customer</h5>
+			</div>
+			<div class="card-body">
+				<form asp-controller="Customer" asp-action="UpdateCustomer" method="post">
+					<div class="mb-3">
+						<label class="form-label">Choose Customer to delete</label>
+						<select asp-for="NewCustomer.CustomerID" class="form-control">
+							@foreach (var customer in Model.Customers)
+						   {
+							   <option value="@customer.CustomerID">@customer.CustomerName</option>
+						   }
+						</select>
+					</div>
+					<div class="mb-3">
+						<label class="form-label">new Name</label>
+						<input asp-for=NewCustomer.CustomerName type="text" class="form-control" required="required" />
+					</div>
+					<div class="mb-3">
+						<label class="form-label">new Email</label>
+						<input asp-for=NewCustomer.CustomerEmail type="email" class="form-control" required="required"/>
+					</div>
+					<div class="mb-3">
+						<button type="submit" class="btn-primary">Save</button>
+					</div>
+
+				</form>
+			</div>
+			<div class="card-footer"></div>
+		</div>
+	</div>
+</div>
